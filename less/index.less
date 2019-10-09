@@ -139,10 +139,25 @@ body {
   height: 100%;
 }
 
-#colors() {
-  bg-color: #181a1b;
-  primary: #4acaa8;
-  secondary: #BDB8AF;
-  tertiary: white;
-}
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text:regular,italic,600,600italic,700,700italic);
 
+// Variables
+
+@title-font: "Work Sans:regular";
+@text-font: "Crimson Text:regular";
+@bg-color: #181a1b;
+@primary: #4acaa8;
+@secondary: #BDB8AF;
+@tertiary: white
+
+/* start of desktop styles */
+@max991: (max-width: 991px);
+
+/* start of large tablet styles */
+@max767: (max-width: 767px);
+
+/* start of phone styles */
+@max479: (max-width: 479px);
+
+// Mixins
