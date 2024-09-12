@@ -4,56 +4,301 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Set every element's box-sizing to border-box */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
+  font-size: 62.5%;
 }
 
+@import url(
+  https://fonts.googleapis.com/css?family=Work+Sans:100,
+  200,
+  300,
+  regular,
+  500,
+  600,
+  700,
+  800,
+  900
+);
+@import url(
+  https://fonts.googleapis.com/css?family=Crimson+Text:regular,
+  italic,
+  600,
+  600italic,
+  700,
+  700italic
+);
+
+// Variables
+
+@title-font: "Work Sans:regular";
+@text-font: "Crimson Text:regular";
+@big-text: 5rem;
+@normal-text: 4rem;
+@small-text: 3rem;
+@bg-color: white;
+@primary: #181a1b;
+@secondary: #bdb8af;
+@tertiary: #4acaa8;
+@normalwidth: 1100px;
+
+/* start of phone styles */
+@max500: (max-width: 500px);
+
+// Mixins
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.columncenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.bordered {
+  border: 2px @tertiary solid;
+}
+
+// selectors
+
+body {
+  font-family: @text-font;
+  font-size: @normal-text;
+  color: @primary;
+  width: @normalwidth;
+  margin: auto;
+  background-color: @bg-color;
+  .allcontent {
+    .bordered();
+  }
+  @media @max500 {
+    .columncenter();
+    border: none;
+  }
+
+  header {
+    .row();
+    .bordered();
+    background-color: @tertiary;
+    padding: 1%;
+    @media @max500 {
+      .columncenter();
+      flex-direction: column-reverse;
+      width: auto;
+    }
+    nav {
+      .row();
+      @media @max500 {
+        .columncenter();
+        width: auto;
+      }
+      a {
+        color: @primary;
+      }
+    }
+    img {
+      border-radius: 100%;
+      width: 10%;
+    }
+  }
+
+  .content {
+    .column();
+    padding: 2%;
+  }
+
+  .container {
+    .column();
+    margin: 3%;
+    h1 {
+      font-family: @title-font;
+      font-size: @big-text;
+    }
+    p {
+      font-family: @normal-text;
+      font-size: @small-text;
+      margin: 1%;
+    }
+    ul {
+      font-family: @normal-text;
+      font-size: @small-text;
+    }
+    table {
+      font-family: @normal-text;
+      font-size: @small-text;
+      .bordered();
+      text-align: left;
+      width: 100%;
+      margin: 1%;
+      td,
+      th {
+        .bordered();
+      }
+    }
+  }
+
+  #Contact {
+    padding: 2% 0%;
+    background-color: @tertiary;
+    .bordered();
+    .contactform {
+      .row();
+      @media @max500 {
+        .columncenter();
+        width: auto;
+      }
+      a {
+        color: @primary;
+      }
+    }
+  }
+  footer {
+    margin: 5% 0;
+    .row();
+    font-size: @small-text;
+  }
+}
